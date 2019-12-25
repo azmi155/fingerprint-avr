@@ -1,0 +1,203 @@
+;/**
+; * @file Fingerprint Example Example Program.c
+; *
+; * @author Matthew Matz
+; *
+; * @version 0.50
+; *
+; * @copyright
+; * Copyright (C) Parallax, Inc. 2017. All Rights MIT Licensed.
+; *
+; * @brief Demonstrates how to use each of the most common fingerprint scanner functions.
+; */
+;
+;#include "fingerprint.h"
+;
+;#define RX_PIN   8     // connect to module's TXD pin
+;#define TX_PIN   9     // connect to module's RXD pin
+;
+;
+;fpScanner * fpScan;
+; 0001 0014 fpScanner * fpScan;
+
+	.CSEG
+;PCODE: $00000000 VOL: 0
+;PCODE: $00000001 VOL: 0
+; 0001 0015 
+; 0001 0016 int fingerScanner(int u)
+;PCODE: $00000002 VOL: 0
+;PCODE: $00000003 VOL: 0
+; 0001 0017 {
+;PCODE: $00000004 VOL: 0
+;PCODE: $00000005 VOL: 0
+; 0001 0018     int r;
+; 0001 0019     fingerprint_scan(fpScan, u, & r);
+;PCODE: $00000006 VOL: 0
+;PCODE: $00000007 VOL: 0
+;	u -> Y+2
+;	r -> R16,R17
+;PCODE: $00000008 VOL: 0
+;PCODE: $00000009 VOL: 0
+; 0001 001A     if (u != 0 && r != 0) return 1;
+;PCODE: $0000000A VOL: 0
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+;PCODE: $0000000F VOL: 0
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+;PCODE: $00000014 VOL: 0
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+;PCODE: $00000017 VOL: 0
+; 0001 001B     else return r;
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 0
+;PCODE: $0000001C VOL: 0
+; 0001 001C }
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+;PCODE: $0000001F VOL: 0
+;PCODE: $00000020 VOL: 0
+;PCODE: $00000021 VOL: 0
+;
+;int checkFingerprint;
+;
+;int main()
+; 0001 0021 {
+;PCODE: $00000022 VOL: 0
+; 0001 0022 
+; 0001 0023     fpScan = fingerprint_open(RX_PIN, TX_PIN);
+;PCODE: $00000023 VOL: 0
+;PCODE: $00000024 VOL: 0
+; 0001 0024 
+; 0001 0025     print("Deleting all users…\r");
+;PCODE: $00000025 VOL: 0
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+; 0001 0026     fingerprint_deleteUser(fpScan, 0);
+;PCODE: $00000028 VOL: 0
+;PCODE: $00000029 VOL: 0
+; 0001 0027 
+; 0001 0028     pause(3000);
+;PCODE: $0000002A VOL: 0
+;PCODE: $0000002B VOL: 0
+; 0001 0029     print("Adding a new fingerprint capture to ID 5\r");
+;PCODE: $0000002C VOL: 0
+;PCODE: $0000002D VOL: 0
+;PCODE: $0000002E VOL: 0
+; 0001 002A     fingerprint_add(fpScan, 5, 3, 0);
+;PCODE: $0000002F VOL: 0
+;PCODE: $00000030 VOL: 0
+;PCODE: $00000031 VOL: 0
+;PCODE: $00000032 VOL: 0
+; 0001 002B 
+; 0001 002C     pause(3000);
+;PCODE: $00000033 VOL: 0
+;PCODE: $00000034 VOL: 0
+; 0001 002D     print("Scanning and comparing to the capture for ID 5\r");
+;PCODE: $00000035 VOL: 0
+;PCODE: $00000036 VOL: 0
+;PCODE: $00000037 VOL: 0
+; 0001 002E     checkFingerprint = fingerScanner(5);
+;PCODE: $00000038 VOL: 0
+;PCODE: $00000039 VOL: 0
+;PCODE: $0000003A VOL: 0
+;PCODE: $0000003B VOL: 0
+;PCODE: $0000003C VOL: 0
+; 0001 002F 
+; 0001 0030     if (checkFingerprint) print("There is a match to ID 5\r");
+;PCODE: $0000003D VOL: 0
+;PCODE: $0000003E VOL: 0
+;PCODE: $0000003F VOL: 0
+;PCODE: $00000040 VOL: 0
+;PCODE: $00000041 VOL: 0
+; 0001 0031     else  print("No matching fingerprints found!\r");
+;PCODE: $00000042 VOL: 0
+;PCODE: $00000043 VOL: 0
+;PCODE: $00000044 VOL: 0
+; 0001 0032 
+; 0001 0033     pause(3000);
+;PCODE: $00000045 VOL: 0
+;PCODE: $00000046 VOL: 0
+; 0001 0034     print("Scanning and finding an ID (if any)\r");
+;PCODE: $00000047 VOL: 0
+;PCODE: $00000048 VOL: 0
+;PCODE: $00000049 VOL: 0
+; 0001 0035 
+; 0001 0036     checkFingerprint = fingerScanner(0);
+;PCODE: $0000004A VOL: 0
+;PCODE: $0000004B VOL: 0
+;PCODE: $0000004C VOL: 0
+;PCODE: $0000004D VOL: 0
+;PCODE: $0000004E VOL: 0
+; 0001 0037     if (checkFingerprint) print("Found a match to ID %d\r", checkFingerprint);
+;PCODE: $0000004F VOL: 0
+;PCODE: $00000050 VOL: 0
+;PCODE: $00000051 VOL: 0
+;PCODE: $00000052 VOL: 0
+;PCODE: $00000053 VOL: 0
+;PCODE: $00000054 VOL: 0
+; 0001 0038     else print("No matching fingerprints found!\r");
+;PCODE: $00000055 VOL: 0
+;PCODE: $00000056 VOL: 0
+;PCODE: $00000057 VOL: 0
+; 0001 0039 
+; 0001 003A     pause(3000);
+;PCODE: $00000058 VOL: 0
+;PCODE: $00000059 VOL: 0
+; 0001 003B     checkFingerprint = fingerprint_countUsers(fpScan);
+;PCODE: $0000005A VOL: 0
+;PCODE: $0000005B VOL: 0
+; 0001 003C     print("The number of saved captures is: %d\r", checkFingerprint);
+;PCODE: $0000005C VOL: 0
+;PCODE: $0000005D VOL: 0
+;PCODE: $0000005E VOL: 0
+;PCODE: $0000005F VOL: 0
+; 0001 003D 
+; 0001 003E     pause(3000);
+;PCODE: $00000060 VOL: 0
+;PCODE: $00000061 VOL: 0
+; 0001 003F     print("Deleting the capture and information for User ID 5\r");
+;PCODE: $00000062 VOL: 0
+;PCODE: $00000063 VOL: 0
+;PCODE: $00000064 VOL: 0
+; 0001 0040     fingerprint_deleteUser(fpScan, 5);
+;PCODE: $00000065 VOL: 0
+;PCODE: $00000066 VOL: 0
+; 0001 0041 
+; 0001 0042 }
+;PCODE: $00000067 VOL: 0
+;PCODE: $00000068 VOL: 0
+;PCODE: $00000069 VOL: 0
+;PCODE: $0000006A VOL: 0
+;
+;
+;
+;
+;/**
+; * TERMS OF USE: MIT License
+; *
+; * Permission is hereby granted, free of charge, to any person obtaining a
+; * copy of this software and associated documentation files (the "Software"),
+; * to deal in the Software without restriction, including without limitation
+; * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+; * and/or sell copies of the Software, and to permit persons to whom the
+; * Software is furnished to do so, subject to the following conditions:
+; *
+; * The above copyright notice and this permission notice shall be included in
+; * all copies or substantial portions of the Software.
+; *
+; * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+; * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+; * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+; * DEALINGS IN THE SOFTWARE.
+; */

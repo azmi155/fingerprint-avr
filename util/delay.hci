@@ -1,0 +1,7 @@
+VERSION:3 SOURCE_TIMESTAMP:4F985BCB
+NODE:M LEVEL:0 LINE:36 "_UTIL_DELAY_H_"
+NODE:M LEVEL:0 LINE:39 "__HAS_DELAY_CYCLES"
+NODE:I LEVEL:0 LINE:42 "C:\cvavr\inc\inttypes.h"
+NODE:I LEVEL:0 LINE:44 "C:\cvavr\inc\math.h"
+NODE:F LEVEL:0 LINE:137 "_delay_ms(float __ms)"
+NODE:F LEVEL:0 LINE:219 "_delay_us(float __us)"

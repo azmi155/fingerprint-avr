@@ -1,0 +1,5 @@
+VERSION:3 SOURCE_TIMESTAMP:4F985B17
+NODE:M LEVEL:0 LINE:35 "_UTIL_DELAY_BASIC_H_"
+NODE:I LEVEL:0 LINE:37 "C:\cvavreval\inc\inttypes.h"
+NODE:I LEVEL:0 LINE:38 "util\delay_basic.h"
+NODE:F LEVEL:0 LINE:40 "__inline__(void)"

@@ -1,0 +1,21 @@
+;/**
+; * @file fingerprint.c
+; *
+; * @author Matthew Matz
+; *
+; * @version 0.50
+; *
+; * @copyright
+; * Copyright (C) Parallax, Inc. 2017. All Rights MIT Licensed.
+; *
+; * @brief Simplifies reading the WaveShare fingerprint scanner module.
+; */
+;
+;
+;#include "fingerprint.h"
+
+	.CSEG
+;PCODE: $00000000 VOL: 0
+;PCODE: $00000001 VOL: 0
+;PCODE: $00000002 VOL: 0
+;PCODE: $00000003 VOL: 0
